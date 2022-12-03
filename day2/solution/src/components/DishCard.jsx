@@ -1,6 +1,12 @@
 import React from 'react';
+import { formatToUSD } from '../utils/money';
+import { DishCardButton } from './DishCardButton';
 
-export function DishCard({ dish, isInCartPanel = false }) {
+// TODO:
+// having dish and dishID as props is prone to mistake
+// (passing a dish and an ID not corresponding to it)
+// should only pass ID and get the dish in the component
+export function DishCard({ cart, dish, dishID, isInCartPanel = false }) {
   return (
     <>
       <div className="plate">
@@ -8,12 +14,13 @@ export function DishCard({ dish, isInCartPanel = false }) {
       </div>
       <div className="content">
         <p className="menu-item">{dish.name}</p>
-        <p className="price">{`$${dish.price / 100}`}</p>
+        <p className="price">{formatToUSD(dish.price)}</p>
         {!isInCartPanel && (
-          <button className="in-cart" type="button">
-            <img src="icons/check.svg" alt="Check" />
-            In Cart
-          </button>
+          <DishCardButton
+            cart={cart}
+            dishID={dishID}
+            isInCart={cart.has(dishID)}
+          />
         )}
       </div>
     </>
