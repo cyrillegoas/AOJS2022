@@ -7,7 +7,7 @@ export function Menu({ cart }) {
     <ul className="menu">
       {Array.from(menu.keys()).map((id) => (
         <li key={id}>
-          <DishCard dish={menu.get(id)} dishID={id} cart={cart} />
+          <DishCard dishID={id} cart={cart} />
         </li>
       ))}
     </ul>

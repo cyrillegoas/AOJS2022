@@ -1,12 +1,10 @@
 import React from 'react';
+import { menu } from '../menu';
 import { formatToUSD } from '../utils/money';
 import { DishCardButton } from './DishCardButton';
 
-// TODO:
-// having dish and dishID as props is prone to mistake
-// (passing a dish and an ID not corresponding to it)
-// should only pass ID and get the dish in the component
-export function DishCard({ cart, dish, dishID, isInCartPanel = false }) {
+export function DishCard({ cart, dishID, isInCartPanel = false }) {
+  const dish = menu.get(dishID);
   return (
     <>
       <div className="plate">

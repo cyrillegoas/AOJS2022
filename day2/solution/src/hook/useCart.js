@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// could use a reducer
 export function useCart() {
   const [content, setContent] = useState(new Map());
 
